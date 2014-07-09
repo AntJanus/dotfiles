@@ -58,6 +58,9 @@ install webkit2png
 install xpdf
 install zopfli
 
+# requirement
+install watchman
+
 install homebrew/versions/lua52
 
 # Remove outdated versions from the cellar
