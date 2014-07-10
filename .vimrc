@@ -36,11 +36,9 @@ call vundle#begin()
 call vundle#end()            " required
 filetype plugin indent on     " required!
 
-"let g:colors_name = "tomorrow-night-bright"
-set guifont=Menlo:12
+set guifont       = "Menlo:12"
 let g:colors_name = "obsidian"
-set background=dark
-" let g:colors_name = "twilight"
+set background    = "dark"
 
 " powerline
 python from powerline.vim import setup as powerline_setup
@@ -193,6 +191,7 @@ vnoremap <leader>a: :Tabularize /:\zs<CR>
 set pastetoggle=<F6>
 
 set nofoldenable    " disable folding
+let g:vim_markdown_folding_disabled=1
 
 "Ctrl P
 "let g:ctrlp_map = '<c-p>'
