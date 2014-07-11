@@ -36,7 +36,6 @@ call vundle#begin()
 call vundle#end()            " required
 filetype plugin indent on     " required!
 
-set guifont       = "Menlo:12"
 let g:colors_name = "obsidian"
 set background    = "dark"
 
