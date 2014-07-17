@@ -29,6 +29,7 @@ call vundle#begin()
  Plugin 'scrooloose/syntastic'
  Plugin 'digitaltoad/vim-jade'
  Plugin 'Tabular'
+ Plugin 'Shougo/neocomplete.vim'
  " Plugin 'Neocomplete'
  " non github repos
  Plugin 'git://git.wincent.com/command-t.git'
@@ -63,6 +64,15 @@ let g:CommandTWildIgnore = &wildignore . ",**/bower_components/*" . ",**/node_mo
 let g:CommandTMaxHeight = 30
 let g:CommandTMaxFiles = 500000
 
+" Necomplete
+"let g:neocomplete#enable_at_startup = 1
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+endif
+
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+
 "Some tips from http://stevelosh.com/blog/2010/09/coming-home-to-vim/"
 
 set tabstop=4
@@ -86,6 +96,10 @@ set laststatus=2
 set cursorline
 
 let mapleader = ","
+
+"Custom settings
+set nofoldenable    " disable folding
+let g:vim_markdown_folding_disabled=1
 
 " search remap
 nnoremap / /\v
@@ -162,6 +176,13 @@ autocmd BufRead,BufNewFile *.twig set ft=htmldjango
 autocmd BufRead,BufNewFile *.rabl set ft=ruby
 autocmd BufRead,BufNewFile *.jade set ft=jade
 
+" Neocomplete filebased completion
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
 " Whitespace fixes
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -178,7 +199,6 @@ set noswapfile
 set nobackup
 nnoremap ; :
 
-nnoremap <leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
 
 " Tabular
 nnoremap <leader>a= :Tabularize /=<CR>
@@ -186,13 +206,36 @@ vnoremap <leader>a= :Tabularize /=<CR>
 nnoremap <leader>a: :Tabularize /:\zs<CR>
 vnoremap <leader>a: :Tabularize /:\zs<CR>
 
-" Paste mode
-set pastetoggle=<F6>
+" Custom maps
+set pastetoggle=<leader>p
+nnoremap <leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
 
-set nofoldenable    " disable folding
-let g:vim_markdown_folding_disabled=1
+nnoremap <leader>vi :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>
 
+" Save
+noremap  <silent> <C-S> :update<CR>
+vnoremap <silent> <C-S> <C-C>:update<CR>
+inoremap <silent> <C-S> <C-O>:update<CR>
+
+" Abbreviations
+iabbrev adn and
+iabbrev waht what
+nnoremap H 00
+nnoremap L $
+inoremap jk <esc>
+
+" Arrow keys
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+
+inoremap <left> <nop>
+inoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
 "Ctrl P
 "let g:ctrlp_map = '<c-p>'
 "let g:ctrlp_cmd = 'CtrlP'
-
