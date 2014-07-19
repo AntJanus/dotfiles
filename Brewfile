@@ -43,5 +43,11 @@ install watchman
 install homebrew/versions/lua52
 install vim --override-system-vi --with-lua
 
+install less
+install gitflow
+install cask
+install php55-mcrypt
+install imagemagick
+install fontconfig
 # Remove outdated versions from the cellar
 cleanup
