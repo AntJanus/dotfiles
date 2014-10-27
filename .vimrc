@@ -1,7 +1,12 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
+set term=xterm
+set t_Co=256
+let &t_AB="\e[48;5;%dm"
+let &t_AF="\e[38;5;%dm"
+
+set rtp+=~/vimfiles/bundle/Vundle.vim
 call vundle#begin()
 " let Vundle manage Vundle
  " required!
@@ -20,7 +25,7 @@ call vundle#begin()
  Plugin 'editorconfig-vim'
  Plugin 'bling/vim-airline'
  Plugin 'airblade/vim-gitgutter'
- " Plugin 'kien/ctrlp.vim'
+ Plugin 'kien/ctrlp.vim'
  " vim-scripts repos
  " Plugin 'L9'
  " Plugin 'FuzzyFinder'
@@ -29,22 +34,17 @@ call vundle#begin()
  Plugin 'scrooloose/syntastic'
  Plugin 'digitaltoad/vim-jade'
  Plugin 'Tabular'
- Plugin 'Shougo/neocomplete.vim'
+ "Plugin 'Shougo/neocomplete.vim'
  " Plugin 'Neocomplete'
  " non github repos
- Plugin 'git://git.wincent.com/command-t.git'
+ " Plugin 'git://git.wincent.com/command-t.git'
  " ...
 call vundle#end()            " required
 filetype plugin indent on     " required!
 
 set guifont       = "Menlo:12"
-let g:colors_name = "Obsidian"
+let g:colors_name = "badwolf"
 set background    = "dark"
-
-" powerline
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
 
 set modelines=0
 syntax enable
@@ -65,8 +65,13 @@ let g:CommandTWildIgnore = &wildignore . ",**/bower_components/*" . ",**/node_mo
 let g:CommandTMaxHeight = 30
 let g:CommandTMaxFiles = 500000
 
+" CtrlP settings
+let g:ctrlp_map = '<leader>t'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'  " Windows
+
 " Necomplete
-"let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_at_startup = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
@@ -153,13 +158,17 @@ nnoremap <leader>bl :ls<CR>
 nnoremap <leader>1 :colorscheme obsidian<cr>
 nnoremap <leader>2 :colorscheme tomorrow-night-bright<cr>
 nnoremap <leader>3 :colorscheme molokai<cr>
+nnoremap <leader>4 :colorscheme badwolf<cr>
 
+" badwolf settings
+let g:badwolf_darkgutter = 1
+let g:badwolf_tabline = 2
+let g:badwolf_css_props_highlight = 1
+let g:badwolf_html_link_underline = 1
 
-" Airline stuff
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#estensions#tabline#fnamemod = ':t'
+" Airline settings
+let g:airline#extensions#tabline#enabled =1
 let g:airline_powerline_fonts=1
-
 nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 
@@ -250,13 +259,12 @@ inoremap <right> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
 
+set fileformat=unix
+set fileformats=unix,dos
 
 " Abbreviations
-augroup abbreviations
-    autocmd!
-    autocmd FileType html :iabbrev <buffer> --- &mdash;
-    autocmd FileType javascript :iabbrev <buffer> ret return
-augroup END
-"Ctrl P
-"let g:ctrlp_map = '<c-p>'
-"let g:ctrlp_cmd = 'CtrlP'
+"augroup abbreviations
+    "autocmd!
+    "autocmd FileType html :iabbrev <buffer> --- &mdash;
+    "autocmd FileType javascript :iabbrev <buffer> ret return
+"augroup END
