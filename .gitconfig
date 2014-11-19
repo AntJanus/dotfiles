@@ -1,12 +1,9 @@
 [alias]
 
-[credential]
-	helper = osxkeychain
 [apply]
 	whitespace = fix
 [core]
 	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
-	editor = /usr/bin/vim --noplugin
 [color]
 	ui = auto
 [color "branch"]
@@ -30,5 +27,3 @@
 	# Automatically correct and execute mistyped commands
 	autocorrect = 1
 [merge]
-[push]
-	default = current
