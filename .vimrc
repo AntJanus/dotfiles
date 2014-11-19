@@ -37,8 +37,7 @@ call vundle#begin()
 call vundle#end()            " required
 filetype plugin indent on     " required!
 
-set guifont       = "Menlo:12"
-let g:colors_name = "Obsidian"
+let g:colors_name = "obsidian"
 set background    = "dark"
 
 " powerline
@@ -96,7 +95,6 @@ set laststatus=2
 " set relativenumber
 set cursorline
 
-
 let mapleader = ","
 
 "Custom settings
@@ -152,7 +150,6 @@ nnoremap <leader>bl :ls<CR>
 " Theme stuff
 nnoremap <leader>1 :colorscheme obsidian<cr>
 nnoremap <leader>2 :colorscheme tomorrow-night-bright<cr>
-nnoremap <leader>3 :colorscheme molokai<cr>
 
 
 " Airline stuff
@@ -163,46 +160,36 @@ let g:airline_powerline_fonts=1
 nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 
-augroup file_types
-    autocmd!
-    autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
-    autocmd BufRead,BufNewFile *.md set filetype=markdown
-    autocmd BufRead,BufNewFile *.txt set filetype=markdown
-    autocmd BufRead,BufNewFile *.module set filetype=php
-    autocmd BufRead,BufNewFile *.install set filetype=php
-    autocmd BufRead,BufNewFile *.test set filetype=php
-    autocmd BufRead,BufNewFile *.inc set filetype=php
-    autocmd BufRead,BufNewFile *.profile set filetype=php
-    autocmd BufRead,BufNewFile *.view set filetype=php
-    autocmd BufNewFile,BufRead *.less set filetype=less
-    autocmd BufRead,BufNewFile *.js set ft=javascript syntax=javascript
-    autocmd BufRead,BufNewFile *.json set ft=json syntax=javascript
-    autocmd BufRead,BufNewFile *.twig set ft=htmldjango
-    autocmd BufRead,BufNewFile *.rabl set ft=ruby
-    autocmd BufRead,BufNewFile *.jade set ft=jade
-augroup END
+autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.txt set filetype=markdown
+autocmd BufRead,BufNewFile *.module set filetype=php
+autocmd BufRead,BufNewFile *.install set filetype=php
+autocmd BufRead,BufNewFile *.test set filetype=php
+autocmd BufRead,BufNewFile *.inc set filetype=php
+autocmd BufRead,BufNewFile *.profile set filetype=php
+autocmd BufRead,BufNewFile *.view set filetype=php
+autocmd BufNewFile,BufRead *.less set filetype=less
+autocmd BufRead,BufNewFile *.js set ft=javascript syntax=javascript
+autocmd BufRead,BufNewFile *.json set ft=json syntax=javascript
+autocmd BufRead,BufNewFile *.twig set ft=htmldjango
+autocmd BufRead,BufNewFile *.rabl set ft=ruby
+autocmd BufRead,BufNewFile *.jade set ft=jade
 
 " Neocomplete filebased completion
-augroup neocomplete_files
-    autocmd!
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-augroup END
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Whitespace fixes
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
-
-augroup whitespace
-    autocmd!
-    autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-    autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-    autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-    autocmd BufWinLeave * call clearmatches()
-augroup END
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 set undolevels=20
 set title
@@ -249,14 +236,13 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
-
-
-" Abbreviations
-augroup abbreviations
-    autocmd!
-    autocmd FileType html :iabbrev <buffer> --- &mdash;
-    autocmd FileType javascript :iabbrev <buffer> ret return
-augroup END
 "Ctrl P
 "let g:ctrlp_map = '<c-p>'
 "let g:ctrlp_cmd = 'CtrlP'
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+
+" Always show statusline
+set laststatus=2
+
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
