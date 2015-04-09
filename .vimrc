@@ -1,12 +1,11 @@
 set nocompatible
 filetype off
 
-set term=xterm
 set t_Co=256
 let &t_AB="\e[48;5;%dm"
 let &t_AF="\e[38;5;%dm"
 
-set rtp+=~/vimfiles/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " let Vundle manage Vundle
  " required!
@@ -20,6 +19,7 @@ call vundle#begin()
 " Plugin 'rstacruz/sparkup', {'rtp': 'vim'}
 " Plugin 'tpope/vim-rails.git'
 " Plugin 'ack.vim'
+ Plugin 'sjl/badwolf'
  Plugin 'plasticboy/vim-markdown'
  Plugin 'groenewege/vim-less'
  Plugin 'editorconfig-vim'
@@ -32,7 +32,7 @@ call vundle#begin()
  Plugin 'scrooloose/NERDTree'
  Plugin 'scrooloose/NERDCommenter'
  Plugin 'scrooloose/syntastic'
- Plugin 'digitaltoad/vim-jade'
+ " Plugin 'digitaltoad/vim-jade'
  Plugin 'Tabular'
  "Plugin 'Shougo/neocomplete.vim'
  " Plugin 'Neocomplete'
@@ -66,9 +66,14 @@ let g:CommandTMaxHeight = 30
 let g:CommandTMaxFiles = 500000
 
 " CtrlP settings
+let g:ctrlp_custom_ignore= &wildignore . '*/.git/*,*/.hg/*,*/.svn/*,*/bower_components/*,*/node_modules/*'
+
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'  " Windows
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 " Necomplete
 let g:neocomplete#enable_at_startup = 1
@@ -156,11 +161,8 @@ nnoremap <leader>bl :ls<CR>
 " Theme stuff
 nnoremap <leader>1 :colorscheme obsidian<cr>
 nnoremap <leader>2 :colorscheme tomorrow-night-bright<cr>
-<<<<<<< HEAD
-=======
 nnoremap <leader>3 :colorscheme molokai<cr>
 nnoremap <leader>4 :colorscheme badwolf<cr>
->>>>>>> 002495879e01652671e1875a4c83da91c7239c19
 
 " badwolf settings
 let g:badwolf_darkgutter = 1
@@ -270,3 +272,8 @@ set fileformats=unix,dos
     "autocmd FileType html :iabbrev <buffer> --- &mdash;
     "autocmd FileType javascript :iabbrev <buffer> ret return
 "augroup END
+set timeout
+set ttimeout
+set ttimeoutlen=0
+
+set matchtime=0
