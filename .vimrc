@@ -156,11 +156,8 @@ nnoremap <leader>bl :ls<CR>
 " Theme stuff
 nnoremap <leader>1 :colorscheme obsidian<cr>
 nnoremap <leader>2 :colorscheme tomorrow-night-bright<cr>
-<<<<<<< HEAD
-=======
 nnoremap <leader>3 :colorscheme molokai<cr>
 nnoremap <leader>4 :colorscheme badwolf<cr>
->>>>>>> 002495879e01652671e1875a4c83da91c7239c19
 
 " badwolf settings
 let g:badwolf_darkgutter = 1
