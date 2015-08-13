@@ -7,9 +7,7 @@ let &t_AF="\e[38;5;%dm"
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" let Vundle manage Vundle
- " required!
- Plugin 'gmarik/Vundle.vim'
+" let Vundle manage Vundle " required!  Plugin 'gmarik/Vundle.vim'
 
  " My Plugins here:
  "
@@ -252,16 +250,11 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
-"Ctrl P
-"let g:ctrlp_map = '<c-p>'
-"let g:ctrlp_cmd = 'CtrlP'
+
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
 " Always show statusline
 set laststatus=2
-
-" Use 256 colours (Use this setting only if your terminal supports 256 colours)
-set t_Co=256
 
 set fileformat=unix
 set fileformats=unix,dos
