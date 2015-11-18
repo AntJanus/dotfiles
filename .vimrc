@@ -32,7 +32,8 @@ call vundle#begin()
  Plugin 'scrooloose/syntastic'
  " Plugin 'digitaltoad/vim-jade'
  Plugin 'Tabular'
- "Plugin 'Shougo/neocomplete.vim'
+ Plugin 'Shougo/neocomplete.vim'
+ Plugin 'leafgarland/typescript-vim'
  " Plugin 'Neocomplete'
  " non github repos
  " Plugin 'git://git.wincent.com/command-t.git'
@@ -72,6 +73,12 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+" Syntastic
+let g:syntastic_javascript_checkers = ["jshint"]
+
+"TypeScript
+let g:typescript_indent_disable = 1
 
 " Necomplete
 let g:neocomplete#enable_at_startup = 1
@@ -185,6 +192,8 @@ autocmd BufRead,BufNewFile *.profile set filetype=php
 autocmd BufRead,BufNewFile *.view set filetype=php
 autocmd BufNewFile,BufRead *.less set filetype=less
 autocmd BufRead,BufNewFile *.js set ft=javascript syntax=javascript
+autocmd BufRead,BufNewFile *.es6 set ft=javascript syntax=javascript
+autocmd BufRead,BufNewFile *.ts set ft=javascript syntax=typescript
 autocmd BufRead,BufNewFile *.json set ft=json syntax=javascript
 autocmd BufRead,BufNewFile *.twig set ft=htmldjango
 autocmd BufRead,BufNewFile *.rabl set ft=ruby
